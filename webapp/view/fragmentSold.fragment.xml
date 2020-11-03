@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="zqtc.ZQTC_CLAIMS.controller.Worklist">
+	<Dialog resizable="true" draggable="true" contentWidth="530px">
+		<content>
+			<Toolbar>
+				<OverflowToolbar>
+					<SearchField id="mySoldSearch" search="searchEHSold" width="500px"/>
+				</OverflowToolbar>
+			</Toolbar>
+			<Table items="{/SoldtoSet}" id="mySoldTable" growing="true" growingThreshold="100" mode="SingleSelectMaster"
+			includeItemInSelection="true" selectionChange="soldToSelect">
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{Kunnr}"/>
+							<Text text="{Name1}"/>
+							<Text text="{Name2}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+				<columns>
+					<Column width="100px">
+						<Label text="SoldTo"/>
+					</Column>
+					<Column width="200px">
+						<Label text="First Name"/>
+					</Column>
+					<Column width="200px">
+						<Label text="Last Name"/>
+					</Column>
+				</columns>
+			</Table>
+		</content>
+		
+		<endButton text="test">
+			<Button icon="sap-icon://sys-cancel" press="cancelSold" id="soldReject" type="Reject" tooltip="close"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,68 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" >
+	<!--<SelectDialog noDataText="No Records Found" title="Select Table" -->
+	<!--	search="onSearchMediaf4" confirm="handleHelpMediaConfirm" -->
+	<!--	cancel="handleTableValueHelpMediaCancel" growingThreshold='100' contentWidth="650px" >-->
+	<!--</SelectDialog>-->
+	<Dialog resizable="true" draggable="true" contentWidth="420px">
+		<content>
+			<Toolbar height="120px">
+				
+				<!--<OverflowToolbar>-->
+				<VBox>
+					<HBox>
+					<Label text="Reason For Rejection:" class="reason"/>
+						<ComboBox items="{/ReasonsSet}"
+                                selectionChange="reasonChange" showSecondaryValues="false" width="240px" >
+                                <items>
+                                <core:ListItem key="{Abgru}" text="{Abgru} {Bezei}" additionalText="{Bezei}"/>
+                              </items>
+                       </ComboBox>
+                     </HBox> 
+                   
+					<SearchField id="myProdSearch" search="searchEHProd" width="375px" placeholder="Product Search"/>
+				</VBox>
+				<!--</OverflowToolbar>-->
+				
+				</Toolbar>
+			<Table items="{/GETPRDSet}" id="myProdTable" growing="true" growingThreshold="100" mode="SingleSelectMaster"
+			       	selectionChange="rowSelectionMedia" >
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{Matnr}"/>
+							<Text text="{Maktx}"/>
+							<!--<Text text="{Mtart}"/>-->
+							<!--<Text text="{Ismyearnr}"/>-->
+							<!--<Text text="{Ismcopynr}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+				<columns>
+					<Column width="150px">
+						<Label text="Product"/>
+					</Column>
+					<Column width="250px">
+						<Label text="Description"/>
+					</Column>
+					<!--<Column width="60px">-->
+					<!--	<Label text="Type"/>-->
+					<!--</Column>-->
+					<!--<Column width="50px">-->
+					<!--	<Label text="Year"/>-->
+					<!--</Column>-->
+					<!--<Column width="50px">-->
+					<!--	<Label text="CopyNum"/>-->
+					<!--</Column>-->
+					<!--   <Column>-->
+					<!--	<Label text="Price"/>-->
+					<!--</Column>-->
+				</columns>
+			</Table>
+		
+			</content>
+		
+			<endButton text="test">
+				<Button icon="sap-icon://sys-cancel" press="cancelProd" type="Reject" tooltip="close"/>
+			</endButton>
+		</Dialog>
+	</core:FragmentDefinition>

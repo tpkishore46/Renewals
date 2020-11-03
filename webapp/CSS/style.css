@@ -1,0 +1,60 @@
+button[data-colorCode="yellow"]{
+background-color: yellow;
+}
+div[data-colorCode="yellow"]{
+background-color: yellow;
+}
+
+.styleclass1 {
+    color: black;
+   padding: 13.5px;
+    font-size: 20px;
+    font-style: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 1px;
+    background-color: white;
+    word-spacing: 3px;
+}
+.styleclass2 {
+   
+    background-color:#3F5161;
+   
+}
+.styleclass3 {
+   padding-top: 7.5px;
+   color: white;
+   
+}
+.styleclass4 {
+   color : black;
+   background-color:white;
+   font-style: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+}
+.height {
+	height : 1.8rem;
+	
+}
+.align {
+
+	
+	
+
+	padding-top: 7.5px;
+	
+}
+.row {
+  
+    background-color:yellow;
+   
+}
+.reason {
+  
+    padding-top: 9.5px;
+    color: red;
+   
+}
+
+
+

@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="zqtc.ZQTC_CLAIMS.controller.Worklist">
+	<Dialog resizable="true" draggable="true" contentWidth="400px" title="Incompletion Log">
+		<content>
+		
+			<Table items="{incomp>/results}" id="myIncompTable" growing="true" growingThreshold="100" mode="None"
+			>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{incomp>Vbeln}"/>
+							<Text text="{incomp>PosnrC}"/>
+							<Text text="{incomp>Description}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+				<columns>
+					<Column width="100px">
+						<Label text="Document"/>
+					</Column>
+						<Column width="100px">
+						<Label text="Header/Item"/>
+					</Column>
+					<Column width="190px">
+						<Label text="Description"/>
+					</Column>
+				</columns>
+			</Table>
+		</content>
+		
+		<endButton text="test">
+			<Button icon="sap-icon://sys-cancel" press="cancelIncomp" type="Reject" tooltip="close"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

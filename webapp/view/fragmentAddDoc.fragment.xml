@@ -1,0 +1,89 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:d="sap.ui.core.LayoutData" xmlns:u="sap.ui.unified">
+	<Dialog resizable="true" draggable="true" id="addDocDialog" contentWidth="850px" title="Address Suggestions">
+		<content >
+			<Table items="{doc>/results}" id="addDocTable" growing="true" growingThreshold="10" mode="SingleSelectMaster"
+			includeItemInSelection="true" selectionChange="addDocSelect">
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{doc>Partner}"/>
+							<Text text="{doc>FirstName}"/>
+							<Text text="{doc>LastName}"/>
+						    <Text text="{doc>City}"/>
+							<Text text="{doc>PostalCode}"/>
+							<Text text="{doc>Street}"/>
+							<Text text="{doc>StrSuppl1}"/>
+							<Text text="{doc>StrSuppl2}"/>
+							<Text text="{doc>StrSuppl3}"/>
+						    <Text text="{doc>Location}"/>
+							<Text text="{doc>Streetcode}"/>
+							<Text text="{doc>HouseNum1}"/>
+							<Text text="{doc>Country}"/>
+						    <Text text="{doc>Region}"/>
+							<Text text="{doc>CountryName}"/>
+							<Text text="{doc>Ecid}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+				<columns>
+					<Column width="100px">
+						<Label text="Partner"/>
+					</Column>
+					<Column width="200px">
+						<Label text="First Name"/>
+					</Column>
+					<Column width="100px">
+						<Label text="Last Name"/>
+					</Column>
+					
+					<Column width="70px">
+						<Label text="City"/>
+					</Column>
+					<Column width="100px">
+						<Label text="Postal Code"/>
+					</Column>
+					<Column width="200px">
+						<Label text="Street"/>
+					</Column>
+					
+					<Column width="70px">
+						<Label text="Street2"/>
+					</Column>
+					<Column width="70px">
+						<Label text="Street3"/>
+					</Column>
+					<Column width="70px">
+						<Label text="Street4"/>
+					</Column>
+					<Column width="70px">
+						<Label text="Location"/>
+					</Column>
+					<Column width="50px">
+						<Label text="Street Code"/>
+					</Column>
+					<Column width="50px">
+						<Label text="House Num"/>
+					</Column>
+					<Column width="60px">
+						<Label text="Country"/>
+					</Column>
+					<Column width="70px">
+						<Label text="Region"/>
+					</Column>
+					<Column width="100px">
+						<Label text="Country Name"/>
+					</Column>
+					<Column width="100px">
+						<Label text="Ecid"/>
+					</Column>
+				</columns>
+			</Table>
+		
+	
+		</content>
+		<endButton text="test" height="10px">
+			<Button icon="sap-icon://sys-cancel" width ="10px" press="cancelAddDoc" type="Reject" tooltip="close"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

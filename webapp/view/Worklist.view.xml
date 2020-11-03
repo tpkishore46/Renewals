@@ -1,0 +1,303 @@
+<mvc:View controllerName="ren.ZQTC_FUTURE_REN.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic"
+	xmlns:table="sap.ui.table" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" height="100%">
+	<Page showHeader="false" >
+		<content>
+			<HBox>
+				<Image src="Logo/Wileylogo.GIF" height="50px" width="150px"/>
+				<Text text="Future Change For DD / Firm Invoice" textAlign="Center" width="1000px" class="styleclass1"/>
+				<Text text=". " textAlign="End" width="200px" class="styleclass1"/>
+			</HBox>
+			<!--<Text text="Filter Criteria" class="styleclass4"/>-->
+			<f:SimpleForm id="SimpleFormChange354" editable="true" layout="ResponsiveGridLayout" class="styleclass2">
+				<f:content>
+					<!--<Label width="150px" text="Filter Criteria" class="styleclass3"/>-->
+					<VBox>
+						<HBox>
+							<Label text="BP:" design="Bold" class="styleclass3" width="189px" textDirection="RTL"/>
+							<Input showValueHelp="true" id="bpInput" width="362px" valueHelpRequest="onHelpRequestBP" showSuggestion="true"
+								suggestionItems="{/SoldtoSet}" suggest="onSuggestbp" suggestionItemSelected="onSuggestionbp" change="bpChange">
+								<suggestionItems>
+									<core:ListItem key="{Kunnr}" text="{Kunnr}" additionalText="{Name1}"/>
+								</suggestionItems>
+							</Input>
+							<Text text="" width="50px"/>
+							<Label text="Renewal Status:" design="Bold" class="styleclass3" textAlign="Center"></Label>
+							<ComboBox id="renstat" items="{/RStatusSet}" width="180px" textAlign="Center" textDirection="RTL" selectionChange="renSelected">
+								<!--<layoutData>-->
+								<!--		<l:GridData span="XL8 L8 M8 S8"/>-->
+								<!--</layoutData>-->
+								<core:Item key="{RenStatus}" text="{RenStatus} {RenDescr}"/>
+							</ComboBox>
+						</HBox>
+						<HBox>
+							<Label text="Contract Start and End Date:" design="Bold" textAlign="Center" class="styleclass3"></Label>
+							<DatePicker id="IDatefrom" width="180px" valueFormat="yyyy-MM-dd" displayFormat="long" change="handleChange"/>
+							<DatePicker id="IDateto" width="180px" valueFormat="yyyy-MM-dd" displayFormat="long" change="handleChange" textAlign="Center"
+								textDirection="RTL">
+								<!--<layoutData>-->
+								<!--	<l:GridData span="XL2 L2 M2 S2"/>-->
+								<!--</layoutData>-->
+							</DatePicker>
+							<Text text="" width="50px"/>
+							<Button tooltip="Refresh" width="20px" type="Emphasized" icon="sap-icon://refresh" press="refresh" class="styleclass3"/>
+						</HBox>
+					</VBox>
+				</f:content>
+			</f:SimpleForm>
+			<!--</Panel>-->
+			<!--<ScrollContainer width="100%" horizontal="true" focusable="true">-->
+				<table:Table id="table" rows="{tp>/results}" rowSelectionChange="rowSelection" showNoData="false" enableGrouping="false"
+					alternateRowColors="true"  selectionMode="MultiToggle" enableSelectAll="false" visibleRowCount="7" cellClick="Menu">
+
+					<!--<headerToolbar>-->
+					<table:extension>
+						<OverflowToolbar id="infobar">
+							<Button width="75px" icon="sap-icon://cart-approval" tooltip="Process" press="processEH" type="Emphasized"/>
+							<SearchField id="searchField" tooltip="{Search}" search="onMainSearch" width="250px"></SearchField>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://reset" tooltip="Reset Layout Sort/Filter" press="resetSort" type="Emphasized"/>
+							<Button icon="sap-icon://action-settings" tooltip="Layout Settings" press="onPersoButtonPressed" type="Emphasized"/>
+							<Button icon="sap-icon://excel-attachment" tooltip="Download Excel" type="Emphasized" press="downloadExcel"/>
+						</OverflowToolbar>
+					</table:extension>
+					<table:rowSettingsTemplate>
+						<!--<table:RowSettings highlight="{= ${tp>ExclStatus} === 'X' ? 'Indication02' : 'None' }"/>-->
+						<table:RowSettings highlight="{tp>District}"/>
+					</table:rowSettingsTemplate>
+					
+					<!--<table:Column width="40px">-->
+					<!--	<table:label>-->
+					<!--		<Label text=""/>-->
+					<!--	</table:label>-->
+					<!--	<table:template>-->
+							<!--<CheckBox text="{tp>Sel}" id="tabSel" textAlign="Left" select="tabLineSelected" -->
+							<!--enabled="{= ${tp>ExclStatus} === 'X' ? false : true }"-->
+							<!--/>-->
+						<!--	<CheckBox text="{tp>Sel}" id="tabSel" textAlign="Left" select="tabLineSelected" -->
+						<!--	enabled="{parts: [ {path: 'tp>ExclStatus'}, {path: 'tp>FutureOrd'} ],-->
+				  <!--                   formatter : '.statusUpdate'}" -->
+						<!--	/>-->
+						<!--</table:template>-->
+					<!--</table:Column >-->
+					<table:Column width="95px" sortProperty="Vbeln" filterProperty="Vbeln">
+						<table:label>
+							<Label text="Contract"/>
+						</table:label>
+						<table:template>
+							<Label text="{tp>Vbeln}"/>
+						</table:template>
+					</table:Column >
+					<table:Column width="35px" id="relord" sortProperty="PosnrC" filterProperty="PosnrC">
+						<table:label>
+							<Label text="Line Item"/>
+						</table:label>
+						<table:template>
+							<Label text="{tp>PosnrC}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="88px" id="relitem" sortProperty="Vbegdat" filterProperty="Vbegdat">
+						<table:label>
+							<Label text="Start Date"/>
+						</table:label>
+						<table:template>
+							<Label text="{tp>Vbegdat}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="88px" id="media" sortProperty="Venddat" filterProperty="Venddat">
+						<table:label>
+							<Label text="End Date"/>
+						</table:label>
+						<table:template>
+							<Label text="{tp>Venddat}"/>
+						</table:template>
+					</table:Column >
+					<table:Column width="110px" sortProperty="Kunag" filterProperty="Kunag">
+						<table:label>
+							<Label text="Sold To"/>
+						</table:label>
+						<table:template id="xyz">
+							<VBox id="abc">
+								<items>
+									<!--<Input value="{tp>Kunag}" showValueHelp="true" id="soldInput" valueHelpRequest="onHelpRequestSold"-->
+									<!--change="soldChange" valueHelpOnly="true"/>-->
+									<Button text="{tp>Kunag}" id="soldInput" press="onHelpRequestSold"/>
+									<!--<Label text=""/>-->
+									<Text text="{tp>KunagOldSet}"/>
+									<!--<Text text=""/>-->
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="120px" sortProperty="Kunwe" filterProperty="NameWe">
+						<table:label>
+							<Label text="Ship To"/>
+						</table:label>
+						<table:template>
+							<VBox>
+								<items>
+									<Text text="{tp>Kunwe}"/>
+									<Text text="{tp>NameWe}"/>
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="120px">
+						<table:label>
+							<Label text="Ship To Address"/>
+						</table:label>
+						<table:template>
+							<VBox>
+								<items>
+									<Button text="Shipto Address" id="shipToAdd" press="shiptoAdd"/>
+									<Text text=""/>
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="100px">
+						<table:label>
+							<Label text="Forwarding Agent"/>
+						</table:label>
+						<table:template>
+							<VBox>
+								<items>
+									<Button text="{tp>Kunff}" id="FF" press="ffF4help" width="90px" />
+									<Text text="{tp>KunffOldSet}"/>
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="90px" sortProperty="Matnr" filterProperty="Matnr">
+						<table:label>
+							<Label text="Product"/>
+						</table:label>
+						<table:template>
+							<VBox>
+								<items>
+									<!--<Input value="{tp>Matnr}" showValueHelp="true" id="prodInput" valueHelpRequest="onHelpRequestProd"-->
+									<!--change="prodChange" valueHelpOnly="true"/>-->
+									<!--<Label text="{tp>Maktx}"/>-->
+									<Button text="{tp>Matnr}" id="prodInput" press="onHelpRequestProd"/>
+									<Text text="{tp>MatnrOldSet}"/>
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="45px" sortProperty="Zmeng" filterProperty="Zmeng">
+						<table:label>
+							<Label text="Qty"/>
+						</table:label>
+						<table:template>
+							<VBox>
+								<items>
+									<Button text="{tp>Zmeng}" id="qtyIn" press="qtyPress"/>
+									<!--<Label text="{tp>ZmengOld} {tp>Zieme}"/>-->
+									<Label text="{tp>ZmengOldSet}"/>
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="70px" sortProperty="Netwr" filterProperty="Netwr">
+						<table:label>
+							<Label text="Net Price"/>
+						</table:label>
+						<table:template>
+							<VBox>
+								<items>
+									<Text text="{tp>Netwr}"/>
+									<Label text="{tp>Waerk}"/>
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="85px" sortProperty="Price" filterProperty="Price">
+						<table:label>
+							<Label text="Price Group"/>
+						</table:label>
+						<table:template >
+							<VBox>
+								<items>
+									<ComboBox items="{/PricegrpSet}" id="priceGrp" 
+									    selectedKey="{tp>Price}" 
+										selectionChange="pricegrpChange" showSecondaryValues="true">
+										<items>
+											<core:ListItem key="{Konda}" text="{Konda}" additionalText="{Vtext}"/>
+										</items>
+									</ComboBox>
+									<Text text="{tp>PriceOldSet}" id="priceGrptext" textAlign="End"/>
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="50px" sortProperty="Zlsch" filterProperty="Zlsch">
+						<table:label>
+							<Label text="Payment Method"/>
+						</table:label>
+						<table:template>
+							<VBox>
+								<items>
+									<!--<Input value="{tp>Zlsch}" showValueHelp="true" id="paymethInput" valueHelpRequest="payMethonF4"-->
+									<!--change="paymethChange" valueHelpOnly="true"/>-->
+									<!--<Label text="{tp>Text1}"/>-->
+									<Button text="{tp>Zlsch}" id="paymethInput" press="payMethodF4" tooltip="Choose Payment Method"/>
+									<Text text="{tp>ZlschOldSet}"/>
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="50px" sortProperty="ExclStatus" filterProperty="ExclStatus">
+						<table:label>
+							<Label text="Exclusion Status"/>
+						</table:label>
+						<table:template>
+							<VBox>
+								<items>
+									<Button text="{tp>ExclStatus}" id="exclStat" press="exclStatusF4" tooltip="Exclusion Details"/>
+									<Text text=""/>
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="65px" sortProperty="RenwlProf" filterProperty="RenwlProf">
+						<table:label>
+							<Label text="Renewal Profile"/>
+						</table:label>
+						<table:template>
+							<Label text="{tp>RenwlProf}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="60px" sortProperty="StatusText" filterProperty="StatusText">
+						<table:label>
+							<Label text="Renewal Status"/>
+						</table:label>
+						<table:template>
+							<!--<VBox>-->
+							<!--	<items>-->
+							<!--<Label text="{tp>RenStatus}"/>-->
+							<Label text="{tp>StatusText}"/>
+							<!--</items>-->
+							<!--</VBox>-->
+						</table:template>
+					</table:Column>
+					<table:Column width="100px" sortProperty="FutureOrd" filterProperty="FutureOrd">
+						<table:label>
+							<Label text="Future Renewal"/>
+						</table:label>
+						<table:template>
+							<VBox>
+								<items>
+							<Link text="{tp>FutureOrd}" href="{tp>Link}" target="_blank"/>
+							<!--<Button text="Incompletion Log" id="incomplete" press="incompleteF4" tooltip="Incompletion Log Details" -->
+							<!--type="Transparent" visible="true"/>-->
+							<ObjectStatus text="{tp>Incomplete}" press="incompleteF4" state="Error" active="true"/>
+								</items>
+							</VBox>
+						</table:template>
+					</table:Column>
+					
+				</table:Table>
+			<!--</ScrollContainer>-->
+		</content>
+		<!--<Toolbar class="styleclass2"></Toolbar>-->
+	</Page>
+</mvc:View>

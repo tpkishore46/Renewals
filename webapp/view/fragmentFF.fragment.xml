@@ -1,0 +1,56 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="zqtc.ZQTC_CLAIMS.controller.Worklist">
+	<Dialog resizable="true" draggable="true" contentWidth="630px" title="Forwarding Agent Value Help">
+		<content>
+			<Toolbar>
+				<OverflowToolbar>
+					<SearchField id="myFFSearch" search="searchFF" width="600px"/>
+				</OverflowToolbar>
+			</Toolbar>
+			<Table items="{/FFAGENTSet}" id="myFFTable" growing="true" growingThreshold="100" mode="SingleSelectMaster"
+			includeItemInSelection="true" selectionChange="ffSelect">
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{Lifnr}"/>
+							<Text text="{Name1}"/>
+							<Text text="{Name2}"/>
+							<Text text="{Sortl}"/>
+							<Text text="{Ort01}"/>
+							<Text text="{Land1}"/>
+						
+						</cells>
+					</ColumnListItem>
+				</items>
+				<columns>
+					<Column width="90px">
+						<Label text="Vendor"/>
+					</Column>
+						<Column width="150px">
+						<Label text="Name1"/>
+					</Column>
+					<Column width="100px">
+						<Label text="Name2"/>
+					</Column>
+					<Column width="80px">
+						<Label text="Search Term"/>
+					</Column>
+					<Column width="100px">
+						<Label text="City"/>
+					</Column>
+					<Column width="70px">
+						<Label text="Country"/>
+					</Column>
+				</columns>
+			</Table>
+		</content>
+		<!--<beginButton >-->
+		<buttons>
+			<Button text="Reset" press="resetFF" type="Transparent" tooltip="Reset Forwarding Agent"/>
+	   
+		<!--</beginButton>-->
+		<!--<endButton text="test">-->
+			<Button icon="sap-icon://sys-cancel" press="cancelFF" type="Reject" tooltip="close"/>
+			 </buttons>
+		<!--</endButton>-->
+	</Dialog>
+</core:FragmentDefinition>

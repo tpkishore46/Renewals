@@ -1,0 +1,74 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+
+	<Dialog resizable="true" draggable="true" contentWidth="450px" title="Item Exclusion Details">
+		<content>
+			<!--<Toolbar >-->
+				
+				<!--<OverflowToolbar>-->
+				<!--	<Button text="Include" width="200px" id="inclExcl" tooltip="Remove Exclusion and Include Item" type="Emphasized"/>-->
+		
+				<!--</OverflowToolbar>-->
+				
+				<!--</Toolbar>-->
+			<!--<Table items="{excl>/results}" id="myExclTable" growing="true" growingThreshold="10" mode="None">-->
+			       	
+			<!--	<items>-->
+			<!--		<ColumnListItem>-->
+			<!--			<cells>-->
+			<!--				<Text text="{excl>ExclResn}"/>-->
+			<!--				<Text text="{excl>ExclDate}"/>-->
+			<!--				<Text text="{excl>ExclResn2}"/>-->
+			<!--				<Text text="{excl>ExclDate2}"/>-->
+			<!--				<Text text="{excl>OtherCmnts}"/>-->
+			<!--			</cells>-->
+			<!--		</ColumnListItem>-->
+			<!--	</items>-->
+			<!--	<columns>-->
+			<!--		<Column width="70px">-->
+			<!--			<Label text="Exclusion Reason"/>-->
+			<!--		</Column>-->
+			<!--		<Column width="100px">-->
+			<!--			<Label text="Date"/>-->
+			<!--		</Column>-->
+			<!--		<Column width="70px">-->
+			<!--			<Label text="Exclusion Reason2"/>-->
+			<!--		</Column>-->
+			<!--		<Column width="100px">-->
+			<!--			<Label text="Date2"/>-->
+			<!--		</Column>-->
+			<!--		<Column width="250px">-->
+			<!--			<Label text="Other Comments"/>-->
+			<!--		</Column>-->
+			<!--	</columns>-->
+			<!--</Table>-->
+			<f:SimpleForm id="SimpleFormexcl" editable="false" layout="ResponsiveGridLayout" title="">
+								<f:content>
+								
+								    
+									<Label text="Exclusion Reason1" design="Bold"/>
+									<Text text="{ExclResn} {ExclResnD}" />							
+									<!--<Button text="Include1" width="100px" id="inclExcl1"  press="includeExcl"/>-->
+									<Label text="Date" design="Bold"/>
+									<Text text="{ExclDate}" width="180px" />
+									<Label text="Exclusion Reason2" design="Bold"/>
+									<Text text="{ExclResn2} {ExclResnD2}" width="150px" />
+									<Label text="Date" design="Bold"  />
+									<Text text="{ExclDate2}" width="180px" />
+									<Label text="Other Comments" design="Bold"/>
+									<Text text="{OtherCmnts}" width="420px" />
+									<HBox>
+									<Button text="Include 1" width="100px" id="inclExcl"  press="includeExcl"
+									tooltip="Remove Exclusion and Include Item" type="Accept"/>
+									<Text text="" width = "25px"/>
+									<Button text="Include 2" width="100px" id="inclExcl2"  press="includeExcl"
+									tooltip="Remove Exclusion and Include Item" type="Accept"/>
+									</HBox>
+								</f:content>
+							</f:SimpleForm>
+			</content>
+		
+			<endButton text="test">
+				<Button icon="sap-icon://sys-cancel" press="cancelExcl" type="Reject" tooltip="close"/>
+			</endButton>
+		</Dialog>
+	</core:FragmentDefinition>

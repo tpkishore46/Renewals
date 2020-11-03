@@ -1,0 +1,89 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:d="sap.ui.core.LayoutData" xmlns:u="sap.ui.unified">
+	<Dialog resizable="true" draggable="true" id="addDialog" contentWidth="650px">
+		<content >
+			<l:Splitter  orientation="Horizontal"> 
+				<f:SimpleForm id="SimpleFormAdd" editable="false" layout="ResponsiveGridLayout" title="Current Address">
+								<f:content>
+								
+									<!--<Label text="Ship To" design="Bold"/>-->
+									<!--<Text text="{Kunwe}" width="200px"/>-->
+									<Label text="Street" design="Bold"/>
+									<Text text="" width="180px" id="street"/>
+									<Label text="Street2" design="Bold"/>
+									<Text text="" width="180px" id="street2"/>
+									<Label text="Street3" design="Bold"/>
+									<Text text="" width="180px" id="street3"/>
+									<Label text="Street4" design="Bold"/>
+									<Text text="" width="180px" id="street4"/>
+									<Label text="Location/Street5" design="Bold"/>
+									<Text text="" width="180px" id="street5"/>
+									
+									<Label text="City" design="Bold"/>
+									<Text text=" " width="150px" id="city"/>
+									<!--<HBox>-->
+									<Label text="Country" design="Bold"  />
+									<Text text=" " width="70px"  id="country"/>
+									
+									<Label text="Region" design="Bold" />
+									<Text text=" " width="70px" id="regio"/>
+									<!--</HBox>-->
+									<Label text="Postal Code" design="Bold"/>
+									<Text text=" " width="120px" id="postcode"/>
+								
+								</f:content>
+							</f:SimpleForm>
+							
+								<f:SimpleForm id="SimpleFormAdd2" editable="true" layout="ResponsiveGridLayout"
+								title="New Address">
+								<f:content>
+								
+									<!--<Label text="Ship To" design="Bold"/>-->
+									<!--<Text text="{Kunwe}" width="200px"/>-->
+									<Label text="Street" design="Bold"/>
+									<Input value="{Street}" width="250px" class="height" id="streetNew"/>
+									
+									<Label text="Street2" design="Bold"/>
+									<Input value="{StrSuppl1}" width="250px" class="height" id="street2New"/>
+									
+									<Label text="Street3" design="Bold"/>
+									<Input value="{StrSuppl2}" width="250px" class="height" id="street3New"/>
+									
+									<Label text="Street4" design="Bold"/>
+									<Input value="{StrSuppl3}" width="250px" class="height" id="street4New"/>
+									
+									<Label text="Location/Street5" design="Bold"/>
+									<Input value="{Location}" width="250px" class="height" id="locNew"/>
+									
+									<Label text="City" design="Bold"/>
+									<Input value="{City1}" width="250px" class="height" id="cityNew"/>
+								
+									<HBox>
+									<Label text="Country" design="Bold"  class="align"/>
+									<Input value="{Country}" width="80px" showValueHelp="true" id="cntryNew" class="height"
+									valueHelpRequest="countryOnF4" valueHelpOnly="true" />
+								    <Text text=" " width="10px"/>
+									<Label text="Region" design="Bold" class="align"/>
+									<Input value="{Region}" width="70px" class="height" showValueHelp="true" id="regionNew" valueHelpRequest="regionOnF4" valueHelpOnly="true"/>
+								
+									</HBox>
+									<HBox>
+									<Label text="Postal Code" design="Bold" class="align"/>
+									<Input value="{PostCode1}" width="120px" class="height"/>
+									</HBox>
+									<HBox>
+										<Button width="75px" press="addUpdate" text="Update" type="Transparent"/>
+										<Text text=" "/>
+										<Button width="75px" press="addReset" text="Reset" type="Transparent"/>
+									</HBox>
+								</f:content>
+							</f:SimpleForm>
+				</l:Splitter> 
+		
+	
+		</content>
+		<endButton text="test" height="10px">
+			<Button icon="sap-icon://sys-cancel" width ="10px" press="cancelAdd" type="Reject" tooltip="close"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

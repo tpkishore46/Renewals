@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog noDataText="No Records Found" title="Payment Method Value Help" 
+		search="onSearchPaymethf4" confirm="handlePaymethConfirm" cancel="handlePaymethCancel" growingThreshold='100' 
+		contentWidth="50px" >
+	
+		
+	</SelectDialog>
+</core:FragmentDefinition>
